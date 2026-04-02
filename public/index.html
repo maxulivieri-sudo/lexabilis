@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Archivio delle leggi italiane in materia di disabilità. Fonti ufficiali: Normattiva, Gazzetta Ufficiale, Parlamento.">
+<meta property="og:title" content="LexAbilis — Normativa Disabilità Italia">
+<meta property="og:description" content="Tutte le leggi italiane sulla disabilità con link alle fonti ufficiali.">
+<meta property="og:type" content="website">
+<title>LexAbilis — Normativa Disabilità Italia</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hbg"></div>
+  <div class="hglow"></div>
+  <div class="h-inner">
+    <div class="h-eyebrow">
+      <div class="h-line"></div>
+      <span class="h-eye-txt">Repubblica Italiana · Normativa vigente</span>
+    </div>
+    <div class="h-main">
+      <div class="h-title">
+        <h1>Lex<em>Abilis</em></h1>
+        <p class="h-sub">Archivio delle leggi italiane in materia di disabilità con link diretti ai testi ufficiali su Normattiva e Gazzetta Ufficiale.</p>
+      </div>
+      <div class="h-stats">
+        <div><div class="stat-n" id="totalCount">—</div><div class="stat-l">Leggi</div></div>
+        <div><div class="stat-n">8</div><div class="stat-l">Aree</div></div>
+        <div><div class="stat-n" id="statAnno">—</div><div class="stat-l">Agg.</div></div>
+      </div>
+    </div>
+    <div class="h-sources">
+      <span class="src-lbl">Fonti ufficiali</span>
+      <span class="src-pill">normattiva.it</span>
+      <span class="src-pill">gazzettaufficiale.it</span>
+      <span class="src-pill">parlamento.it</span>
+      <span class="src-pill">eur-lex.europa.eu</span>
+    </div>
+  </div>
+</header>
+
+<div class="ctrl-bar">
+  <div class="ctrl-inner">
+    <div class="srch">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="si" type="text" placeholder="Cerca per numero, titolo, parola chiave…" oninput="render()">
+    </div>
+    <div class="filters" id="filters">
+      <button class="fb active" data-f="tutti" onclick="sf(this)">Tutti</button>
+      <button class="fb" data-f="lavoro" onclick="sf(this)">Lavoro</button>
+      <button class="fb" data-f="salute" onclick="sf(this)">Salute</button>
+      <button class="fb" data-f="accessibilita" onclick="sf(this)">Accessibilità</button>
+      <button class="fb" data-f="welfare" onclick="sf(this)">Welfare</button>
+      <button class="fb" data-f="istruzione" onclick="sf(this)">Istruzione</button>
+      <button class="fb" data-f="internazionale" onclick="sf(this)">Internazionale</button>
+      <button class="fb" data-f="previdenza" onclick="sf(this)">Previdenza</button>
+      <button class="fb" data-f="trasporti" onclick="sf(this)">Trasporti</button>
+    </div>
+  </div>
+</div>
+
+<div class="meta">
+  <span id="cl">Caricamento leggi…</span>
+  <div class="legend">
+    <div class="li"><div class="ld" style="background:#16a34a"></div><span>Vigente</span></div>
+    <div class="li"><div class="ld" style="background:#d97706"></div><span>Parz. modificata</span></div>
+    <div class="li"><div class="ld" style="background:#2563eb"></div><span>In attuazione</span></div>
+  </div>
+</div>
+
+<div class="grid" id="grid">
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Caricamento dal database…</p>
+  </div>
+</div>
+
+<footer class="sfooter">
+  <div class="footer-inner">
+    <div class="footer-logo">Lex<em>Abilis</em></div>
+    <p>I link rimandano ai testi ufficiali su <a href="https://www.normattiva.it" target="_blank" rel="noopener">normattiva.it</a> e <a href="https://www.gazzettaufficiale.it" target="_blank" rel="noopener">gazzettaufficiale.it</a>.<br>
+    Strumento a finalità informative. Per consulenza giuridica rivolgiti a un professionista abilitato.</p>
+    <p class="footer-update">Database aggiornato in tempo reale · <a href="https://www.normattiva.it" target="_blank" rel="noopener">Normattiva</a> · <a href="https://www.gazzettaufficiale.it" target="_blank" rel="noopener">Gazzetta Ufficiale</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
