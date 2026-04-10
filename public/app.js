@@ -85,7 +85,7 @@ function render() {
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
             <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
-          Testo su Normattiva
+          ${labelFonte(l.urlNormattiva)}
         </a>` : ''}
         ${l.urlGazzetta ? `<a class="btn bg" href="${escHtml(l.urlGazzetta)}" target="_blank" rel="noopener">
           <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -101,7 +101,19 @@ function render() {
   });
 }
 
-function escHtml(str) {
+function labelFonte(url) {
+  if (!url) return 'Testo ufficiale';
+  if (url.includes('normattiva.it'))   return 'Testo su Normattiva';
+  if (url.includes('salute.gov.it'))   return 'Testo su Ministero Salute';
+  if (url.includes('mim.gov.it') || url.includes('istruzione.it')) return 'Testo su Ministero Istruzione';
+  if (url.includes('lavoro.gov.it'))   return 'Testo su Ministero Lavoro';
+  if (url.includes('eur-lex.europa'))  return 'Testo su EUR-Lex';
+  if (url.includes('parlamento.it'))   return 'Testo su Parlamento';
+  if (url.includes('gazzettaufficiale')) return 'Testo su Gazzetta Uff.';
+  return 'Testo ufficiale';
+}
+
+
   if (!str) return '';
   return String(str)
     .replace(/&/g, '&amp;')
