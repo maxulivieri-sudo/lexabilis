@@ -114,6 +114,7 @@ function labelFonte(url) {
 }
 
 
+function escHtml(str) {
   if (!str) return '';
   return String(str)
     .replace(/&/g, '&amp;')
