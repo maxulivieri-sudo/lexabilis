@@ -16,159 +16,95 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
+  /* GRID — identico all'Archivio */
   .news-grid {
-    max-width: 900px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 24px 48px 70px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    padding: 18px 48px 70px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 17px;
   }
 
+  /* CARD */
   .news-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 14px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
     animation: rise .3s ease both;
   }
-
-  .news-card:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,.08);
-  }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
 
   .news-stripe { height: 3px; }
-  .cat-decreto    { background: #3b82f6; }
+  .cat-decreto       { background: #3b82f6; }
   .cat-aggiornamento { background: #10b981; }
   .cat-consultazione { background: #f59e0b; }
-  .cat-approvato  { background: #8b5cf6; }
-  .cat-vigore     { background: #10b981; }
+  .cat-approvato     { background: #8b5cf6; }
+  .cat-vigore        { background: #10b981; }
 
-  .news-body { padding: 22px 26px; }
+  .news-body { padding: 19px 21px 15px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
 
-  .news-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-  }
+  .news-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
 
   .news-cat {
-    font-size: .68rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
-    letter-spacing: .04em;
-    white-space: nowrap;
+    font-size: .63rem; font-weight: 600; padding: 3px 8px;
+    border-radius: 20px; letter-spacing: .03em; white-space: nowrap;
   }
-
-  .cat-badge-decreto     { background: #dbeafe; color: #1e40af; }
+  .cat-badge-decreto       { background: #dbeafe; color: #1e40af; }
   .cat-badge-aggiornamento { background: #d1fae5; color: #065f46; }
   .cat-badge-consultazione { background: #fef3c7; color: #92400e; }
-  .cat-badge-approvato   { background: #ede9fe; color: #5b21b6; }
-  .cat-badge-vigore      { background: #d1fae5; color: #065f46; }
+  .cat-badge-approvato     { background: #ede9fe; color: #5b21b6; }
+  .cat-badge-vigore        { background: #d1fae5; color: #065f46; }
 
-  .news-data {
-    font-size: .75rem;
-    color: var(--muted);
-  }
+  .news-data { font-size: .68rem; color: var(--muted); background: var(--surface); padding: 2px 7px; border-radius: 4px; border: 1px solid var(--border); white-space: nowrap; }
 
-  .news-titolo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.3;
-    margin-bottom: 10px;
-  }
+  .news-titolo { font-family: 'Fraunces', serif; font-size: 1.04rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
 
-  .news-desc {
-    font-size: .87rem;
-    color: var(--slate);
-    line-height: 1.6;
-    margin-bottom: 12px;
-  }
+  .news-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; flex: 1; }
 
+  /* DETTAGLIO ESPANDIBILE */
   .news-dettaglio {
-    font-size: .81rem;
-    color: var(--muted);
-    line-height: 1.6;
-    background: #f9f7f3;
-    border-left: 3px solid var(--gold);
-    padding: 10px 14px;
-    border-radius: 0 6px 6px 0;
-    margin-bottom: 14px;
+    font-size: .78rem; color: var(--slate); background: #f9f7f3;
+    border-left: 3px solid var(--gold); padding: 9px 12px;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+    display: none;
   }
+  .news-dettaglio strong { display: block; font-size: .65rem; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); margin-bottom: 3px; }
+  .news-card.expanded .news-dettaglio { display: block; }
 
+  .news-legge { font-size: .72rem; color: var(--muted); }
+  .news-legge strong { color: var(--slate); }
+
+  /* FOOTER CARD */
   .news-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding-top: 14px;
+    padding: 11px 21px;
     border-top: 1px solid var(--border);
-    margin-top: 4px;
+    display: flex; gap: 7px; align-items: center; flex-wrap: wrap;
+    background: #fafaf8;
   }
 
-  .news-legge {
-    font-size: .74rem;
-    color: var(--muted);
+  .expand-hint {
+    margin-left: auto; font-size: .7rem; color: var(--muted);
+    display: flex; align-items: center; gap: 4px;
   }
-
-  .news-legge strong {
-    color: var(--slate);
-  }
+  .expand-hint svg { transition: transform .2s; }
+  .news-card.expanded .expand-hint svg { transform: rotate(180deg); }
 
   .page-meta {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 16px 48px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: .78rem;
-    color: var(--muted);
+    max-width: 1280px; margin: 0 auto; padding: 16px 48px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .78rem; color: var(--muted); flex-wrap: wrap; gap: 10px;
   }
-
   .page-meta strong { color: var(--ink); }
 
-  /* NAV */
-  .site-nav {
-    background: var(--ink2);
-    border-bottom: 1px solid rgba(255,255,255,.06);
-  }
-
-  .nav-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 48px;
-    display: flex;
-    gap: 4px;
-  }
-
-  .nav-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 14px 18px;
-    color: rgba(255,255,255,.5);
-    text-decoration: none;
-    font-size: .83rem;
-    font-weight: 500;
-    border-bottom: 2px solid transparent;
-    transition: all .15s;
-  }
-
-  .nav-link:hover { color: #fff; }
-  .nav-link.active { color: var(--gold-light); border-bottom-color: var(--gold); }
-
   @media (max-width: 720px) {
-    .news-grid { padding: 16px 20px 48px; }
+    .news-grid { padding: 15px 20px 48px; grid-template-columns: 1fr; }
     .page-meta { padding: 12px 20px 0; }
-    .nav-inner { padding: 0 20px; }
   }
 </style>
 </head>
@@ -208,12 +144,12 @@
   </div>
 </nav>
 
-<div class="page-meta">
+<div class="meta">
   <span id="cl">Caricamento…</span>
   <span>Aggiornato in tempo reale</span>
 </div>
 
-<div class="news-grid" id="grid">
+<div class="grid" id="grid">
   <div class="loading">
     <div class="spinner"></div>
     <p>Caricamento dal database…</p>
@@ -231,11 +167,11 @@
 
 <script>
 const catMap = {
-  'Decreto attuativo':     { stripe: 'cat-decreto',       badge: 'cat-badge-decreto' },
+  'Decreto attuativo':      { stripe: 'cat-decreto',       badge: 'cat-badge-decreto' },
   'Aggiornamento normativo':{ stripe: 'cat-aggiornamento', badge: 'cat-badge-aggiornamento' },
-  'In consultazione':      { stripe: 'cat-consultazione', badge: 'cat-badge-consultazione' },
-  'Approvato':             { stripe: 'cat-approvato',     badge: 'cat-badge-approvato' },
-  'In vigore':             { stripe: 'cat-vigore',        badge: 'cat-badge-vigore' }
+  'In consultazione':       { stripe: 'cat-consultazione', badge: 'cat-badge-consultazione' },
+  'Approvato':              { stripe: 'cat-approvato',     badge: 'cat-badge-approvato' },
+  'In vigore':              { stripe: 'cat-vigore',        badge: 'cat-badge-vigore' }
 };
 
 function formatData(d) {
@@ -247,6 +183,10 @@ function formatData(d) {
 function esc(str) {
   if (!str) return '';
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toggleCard(card) {
+  card.classList.toggle('expanded');
 }
 
 async function loadNovita() {
@@ -271,7 +211,8 @@ async function loadNovita() {
       const cat = catMap[n.categoria] || { stripe: 'cat-aggiornamento', badge: 'cat-badge-aggiornamento' };
       const card = document.createElement('div');
       card.className = 'news-card';
-      card.style.animationDelay = `${Math.min(i * 0.05, 0.4)}s`;
+      card.style.animationDelay = `${Math.min(i * 0.03, 0.3)}s`;
+      card.onclick = () => toggleCard(card);
 
       card.innerHTML = `
         <div class="news-stripe ${cat.stripe}"></div>
@@ -282,14 +223,18 @@ async function loadNovita() {
           </div>
           <div class="news-titolo">${esc(n.titolo)}</div>
           <div class="news-desc">${esc(n.descrizione)}</div>
-          ${n.dettaglio ? `<div class="news-dettaglio">${esc(n.dettaglio)}</div>` : ''}
-          <div class="news-footer">
-            <div class="news-legge">${n.leggeCollegata ? `<strong>Legge collegata:</strong> ${esc(n.leggeCollegata)}` : ''}</div>
-            ${n.urlRiferimento ? `<a class="btn bn" href="${esc(n.urlRiferimento)}" target="_blank" rel="noopener">
-              <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Fonte ufficiale
-            </a>` : ''}
-          </div>
+          ${n.dettaglio ? `<div class="news-dettaglio"><strong>Approfondimento</strong>${esc(n.dettaglio)}</div>` : ''}
+          ${n.leggeCollegata ? `<div class="news-legge"><strong>Legge collegata:</strong> ${esc(n.leggeCollegata)}</div>` : ''}
+        </div>
+        <div class="news-footer">
+          ${n.urlRiferimento ? `<a class="btn bn" href="${esc(n.urlRiferimento)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Fonte ufficiale
+          </a>` : ''}
+          ${n.dettaglio ? `<span class="expand-hint">
+            Dettaglio
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>` : ''}
         </div>`;
       grid.appendChild(card);
     });
