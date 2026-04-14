@@ -16,7 +16,7 @@ exports.handler = async () => {
       },
       body: JSON.stringify({
         filter: { property: "Pubblicata", checkbox: { equals: true } },
-        sorts:  [{ property: "Data", direction: "descending" }],
+        sorts:  [{ timestamp: "created_time", direction: "descending" }],
         page_size: 50
       })
     });
