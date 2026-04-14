@@ -38,6 +38,13 @@ body { font-family: 'Outfit', sans-serif; background: var(--surface); color: var
 .src-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 13px; border: 1px solid rgba(201,147,58,.3); border-radius: 20px; font-size: .7rem; color: var(--gold-light); }
 .src-pill::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
 
+/* NAV */
+.site-nav { background: var(--ink2); border-bottom: 1px solid rgba(255,255,255,.06); }
+.nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; display: flex; gap: 4px; }
+.nav-link { display: inline-flex; align-items: center; gap: 7px; padding: 14px 18px; color: rgba(255,255,255,.5); text-decoration: none; font-size: .83rem; font-weight: 500; border-bottom: 2px solid transparent; transition: all .15s; }
+.nav-link:hover { color: #fff; }
+.nav-link.active { color: var(--gold-light); border-bottom-color: var(--gold); }
+
 /* CONTROLS */
 .ctrl-bar { background: var(--ink2); border-bottom: 1px solid rgba(255,255,255,.06); position: sticky; top: 0; z-index: 50; }
 .ctrl-inner { max-width: 1280px; margin: 0 auto; padding: 13px 48px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aggiornamenti normativi sulla disabilità in Italia: decreti attuativi in arrivo, nuove leggi, modifiche in vigore.">
+<meta property="og:title" content="LexAbilis — Novità Normative">
+<meta property="og:description" content="Aggiornamenti sui decreti attuativi e le novità legislative sulla disabilità.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.lexabilis.it/lexabilis_opengraph_final.png">
+<meta property="og:url" content="https://www.lexabilis.it/novita.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.lexabilis.it/lexabilis_opengraph_final.png">
+<title>LexAbilis — Novità Normative</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .news-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 48px 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .news-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    animation: rise .3s ease both;
+  }
+
+  .news-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+  }
+
+  .news-stripe { height: 3px; }
+  .cat-decreto    { background: #3b82f6; }
+  .cat-aggiornamento { background: #10b981; }
+  .cat-consultazione { background: #f59e0b; }
+  .cat-approvato  { background: #8b5cf6; }
+  .cat-vigore     { background: #10b981; }
+
+  .news-body { padding: 22px 26px; }
+
+  .news-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .news-cat {
+    font-size: .68rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: .04em;
+    white-space: nowrap;
+  }
+
+  .cat-badge-decreto     { background: #dbeafe; color: #1e40af; }
+  .cat-badge-aggiornamento { background: #d1fae5; color: #065f46; }
+  .cat-badge-consultazione { background: #fef3c7; color: #92400e; }
+  .cat-badge-approvato   { background: #ede9fe; color: #5b21b6; }
+  .cat-badge-vigore      { background: #d1fae5; color: #065f46; }
+
+  .news-data {
+    font-size: .75rem;
+    color: var(--muted);
+  }
+
+  .news-titolo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .news-desc {
+    font-size: .87rem;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .news-dettaglio {
+    font-size: .81rem;
+    color: var(--muted);
+    line-height: 1.6;
+    background: #f9f7f3;
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 14px;
+  }
+
+  .news-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+
+  .news-legge {
+    font-size: .74rem;
+    color: var(--muted);
+  }
+
+  .news-legge strong {
+    color: var(--slate);
+  }
+
+  .page-meta {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px 48px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .78rem;
+    color: var(--muted);
+  }
+
+  .page-meta strong { color: var(--ink); }
+
+  /* NAV */
+  .site-nav {
+    background: var(--ink2);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    gap: 4px;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 18px;
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+    font-size: .83rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all .15s;
+  }
+
+  .nav-link:hover { color: #fff; }
+  .nav-link.active { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+  @media (max-width: 720px) {
+    .news-grid { padding: 16px 20px 48px; }
+    .page-meta { padding: 12px 20px 0; }
+    .nav-inner { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hbg"></div>
+  <div class="hglow"></div>
+  <div class="h-inner">
+    <div class="h-eyebrow">
+      <div class="h-line"></div>
+      <span class="h-eye-txt">Repubblica Italiana · Aggiornamenti normativi</span>
+    </div>
+    <div class="h-main">
+      <div class="h-title">
+        <h1>Lex<em>Abilis</em></h1>
+        <p class="h-sub">Decreti attuativi in arrivo, modifiche in vigore e novità legislative in materia di disabilità.</p>
+      </div>
+      <div class="h-stats">
+        <div><div class="stat-n" id="totalCount">—</div><div class="stat-l">Novità</div></div>
+        <div><div class="stat-n" id="statAnno">—</div><div class="stat-l">Agg.</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-link" href="index.html">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Archivio leggi
+    </a>
+    <a class="nav-link active" href="novita.html">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Novità
+    </a>
+  </div>
+</nav>
+
+<div class="page-meta">
+  <span id="cl">Caricamento…</span>
+  <span>Aggiornato in tempo reale</span>
+</div>
+
+<div class="news-grid" id="grid">
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Caricamento dal database…</p>
+  </div>
+</div>
+
+<footer class="sfooter">
+  <div class="footer-inner">
+    <div class="footer-logo">Lex<em>Abilis</em></div>
+    <p>Strumento a finalità informative. Per consulenza giuridica rivolgiti a un professionista abilitato.</p>
+    <p class="footer-update">Database aggiornato in tempo reale · <a href="https://www.normattiva.it" target="_blank" rel="noopener">Normattiva</a> · <a href="https://www.gazzettaufficiale.it" target="_blank" rel="noopener">Gazzetta Ufficiale</a></p>
+    <p class="footer-author">Un'idea di <a href="https://www.maximilianoulivieri.it" target="_blank" rel="noopener"><strong>Maximiliano Ulivieri</strong></a></p>
+  </div>
+</footer>
+
+<script>
+const catMap = {
+  'Decreto attuativo':     { stripe: 'cat-decreto',       badge: 'cat-badge-decreto' },
+  'Aggiornamento normativo':{ stripe: 'cat-aggiornamento', badge: 'cat-badge-aggiornamento' },
+  'In consultazione':      { stripe: 'cat-consultazione', badge: 'cat-badge-consultazione' },
+  'Approvato':             { stripe: 'cat-approvato',     badge: 'cat-badge-approvato' },
+  'In vigore':             { stripe: 'cat-vigore',        badge: 'cat-badge-vigore' }
+};
+
+function formatData(d) {
+  if (!d) return '';
+  const dt = new Date(d);
+  return dt.toLocaleDateString('it-IT', { year: 'numeric', month: 'long' });
+}
+
+function esc(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function loadNovita() {
+  const grid = document.getElementById('grid');
+  try {
+    const res = await fetch('/.netlify/functions/novita');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const novita = await res.json();
+
+    document.getElementById('totalCount').textContent = novita.length;
+    document.getElementById('statAnno').textContent = new Date().getFullYear();
+    document.getElementById('cl').innerHTML = `<strong>${novita.length}</strong> aggiornamenti`;
+
+    grid.innerHTML = '';
+
+    if (!novita.length) {
+      grid.innerHTML = `<div class="empty"><p>Nessuna novità al momento.</p></div>`;
+      return;
+    }
+
+    novita.forEach((n, i) => {
+      const cat = catMap[n.categoria] || { stripe: 'cat-aggiornamento', badge: 'cat-badge-aggiornamento' };
+      const card = document.createElement('div');
+      card.className = 'news-card';
+      card.style.animationDelay = `${Math.min(i * 0.05, 0.4)}s`;
+
+      card.innerHTML = `
+        <div class="news-stripe ${cat.stripe}"></div>
+        <div class="news-body">
+          <div class="news-top">
+            <span class="news-cat ${cat.badge}">${esc(n.categoria)}</span>
+            <span class="news-data">${formatData(n.data)}</span>
+          </div>
+          <div class="news-titolo">${esc(n.titolo)}</div>
+          <div class="news-desc">${esc(n.descrizione)}</div>
+          ${n.dettaglio ? `<div class="news-dettaglio">${esc(n.dettaglio)}</div>` : ''}
+          <div class="news-footer">
+            <div class="news-legge">${n.leggeCollegata ? `<strong>Legge collegata:</strong> ${esc(n.leggeCollegata)}` : ''}</div>
+            ${n.urlRiferimento ? `<a class="btn bn" href="${esc(n.urlRiferimento)}" target="_blank" rel="noopener">
+              <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Fonte ufficiale
+            </a>` : ''}
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+
+  } catch (err) {
+    grid.innerHTML = `<div class="error-state"><p>Errore nel caricamento. Riprova tra qualche istante.</p></div>`;
+    document.getElementById('cl').textContent = 'Errore di caricamento';
+  }
+}
+
+loadNovita();
+</script>
+</body>
+</html>
